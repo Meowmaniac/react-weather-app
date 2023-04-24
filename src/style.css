@@ -1,0 +1,176 @@
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+}
+
+div {
+  display: block;
+}
+
+.weather-app {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  border: black solid 1px;
+  border-radius: 10px;
+  background-color: #2670af;
+}
+
+h1.city {
+  margin: 0;
+  color: rgb(255, 255, 255);
+  font-weight: normal;
+  font-family: "DIN-Light", sans-serif;
+  font-size: 42px;
+  white-space: nowrap;
+}
+
+#description::first-letter {
+  text-transform: capitalize;
+}
+
+.detailed-metrics {
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.detailed-metrics p {
+  font-size: 1em;
+  margin-bottom: 5px;
+}
+
+.detailed-metrics .value {
+  display: flex;
+  font-size: 1.2em;
+  padding-right: 2px;
+}
+
+.detailed-metrics .metric {
+  font-size: 0.6em;
+  display: flex;
+  color: rgba(255, 255, 255, 0.7);
+  opacity: 1;
+  padding-top: 4px;
+}
+
+.date {
+  display: block;
+  font-size: 0.8em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.current-weather {
+  display: flex;
+}
+
+.current-weather:first-child {
+  margin-right: 5px;
+}
+
+.current-weather .current-temperature {
+  float: left;
+  font-size: 76px;
+  color: #ffea51;
+}
+
+.current-weather .unitwrap {
+  height: 30px;
+  display: block;
+  margin-top: 20px;
+  color: #ffea51;
+  font-size: 1.4em;
+}
+
+.to-celcium,
+.to-fahrenheit {
+  text-decoration: none;
+  color: #ffea51;
+}
+
+.to-celcium:hover,
+.to-fahrenheit:hover {
+  cursor: default;
+  color: #ffea51;
+}
+
+.current-weather .feels-like {
+  margin: -5px 5px;
+  display: table;
+}
+
+.current-weather .label {
+  font-size: 12px;
+  display: table-cell;
+  text-transform: uppercase;
+  line-height: 17px;
+  text-align: right;
+  padding-right: 10px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  vertical-align: middle;
+}
+
+.current-weather .value {
+  font-size: 34px;
+  color: rgba(255, 255, 255, 0.8);
+  display: table-cell;
+}
+
+.current-icon img {
+  height: 125px;
+}
+
+.coded-by {
+  font-size: 14px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0;
+  margin-top: 20px;
+}
+
+.coded-by a {
+  text-decoration: none;
+  color: #1cd5ff;
+}
+
+.coded-by a:hover {
+  color: white;
+}
+
+#description {
+  margin-top: -15px;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.metrics .row {
+  margin-top: 25px;
+}
+
+.current-weather .active {
+  color: orange;
+  cursor: default;
+}
+
+.current-weather .active:hover {
+  cursor: default;
+}
+
+.day-forecast-img {
+  width: 60px;
+  margin: 0 auto;
+}
+
+.day-forecast {
+  text-align: center;
+}
+
+.forecast-date,
+.forecast-temperatures {
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.forecast-night-temperature {
+  color: rgba(255, 255, 255, 0.5);
+}

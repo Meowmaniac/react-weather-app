@@ -32,7 +32,6 @@ export default function Search() {
       name: response.data.name,
       coordinates: response.data.coord,
     });
-    console.log(weather);
   }
 
   function setDefaultCity() {
@@ -52,7 +51,6 @@ export default function Search() {
       pressure: Math.round(response.data.main.pressure / 1000),
       name: response.data.name,
     };
-    console.log(defaultWeather);
   }
 
   function handleSubmit(event) {

@@ -53,14 +53,18 @@ export default function Forecast(props) {
         {defaultForecast.map(function (dayForecast, index) {
           if (index < 6) {
             return (
-              <div class="col day-forecast">
-                <div class="forecast-date">{dayForecast.day}</div>
-                <img class="day-forecast-img" src={dayForecast.icon} alt="" />
-                <div class="forecast-temperatures">
-                  <span class="forecast-day-temperature">
+              <div key={index} className="col day-forecast">
+                <div className="forecast-date">{dayForecast.day}</div>
+                <img
+                  className="day-forecast-img"
+                  src={dayForecast.icon}
+                  alt=""
+                />
+                <div className="forecast-temperatures">
+                  <span className="forecast-day-temperature">
                     {dayForecast.dayTemp}°
                   </span>
-                  <span class="forecast-night-temperature">
+                  <span className="forecast-night-temperature">
                     {dayForecast.nightTemp}°
                   </span>
                 </div>

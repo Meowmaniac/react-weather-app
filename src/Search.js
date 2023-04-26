@@ -2,16 +2,21 @@ import React, { useState } from "react";
 import axios from "axios";
 import WeatherData from "./WeatherData";
 import CurrentDate from "./CurrentDate";
+import Forecast from "./Forecast";
 
 export default function Search() {
   let [city, setCity] = useState("");
   let [weather, setWeather] = useState(null);
   let defaultWeather = {
-    temperature: 8,
+    temperature: 13,
+    feelslike: 13,
     description: "scattered clouds",
     humidity: 86,
     wind: 8,
     icon: "http://openweathermap.org/img/wn/03n@2x.png",
+    visibility: 10,
+    pressure: 1,
+    name: "New York",
   };
 
   function fillWeatherData(response) {
@@ -25,6 +30,7 @@ export default function Search() {
       visibility: response.data.visibility / 1000,
       pressure: Math.round(response.data.main.pressure / 1000),
       name: response.data.name,
+      coordinates: response.data.coord,
     });
     console.log(weather);
   }
@@ -90,20 +96,19 @@ export default function Search() {
       <div className="Search">
         <h1 className="city">{weather.name} Weather</h1>
         <CurrentDate />
-
         {form}
-
         <WeatherData weather={weather} />
+        <Forecast />
       </div>
     );
   } else {
     return (
       <div className="Search">
-        <h1>Default Weather</h1>
+        <h1 className="city">{defaultWeather.name} Weather</h1>
         <CurrentDate />
         {form}
-
         <WeatherData weather={defaultWeather} />
+        <Forecast />
       </div>
     );
   }

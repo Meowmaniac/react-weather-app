@@ -60,7 +60,6 @@ export default function WeatherData(props) {
         </div>
         <p id="description">{props.weather.description}</p>
       </div>
-      <Forecast />
     </div>
   );
 }

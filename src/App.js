@@ -22,7 +22,7 @@ function App() {
         <div className="weather-app">
           <Search />
           <p class="coded-by">
-            <a href="https://github.com/Meowmaniac/valila-weather-app">
+            <a href="https://github.com/Meowmaniac/react-weather-app">
               Open source code
             </a>{" "}
             by Kateryna Pavlova

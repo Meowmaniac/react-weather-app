@@ -4,23 +4,13 @@ import WeatherData from "./WeatherData";
 import CurrentDate from "./CurrentDate";
 import Forecast from "./Forecast";
 
-export default function Search() {
-  let [city, setCity] = useState("");
-  let [weather, setWeather] = useState(null);
-  let defaultWeather = {
-    temperature: 13,
-    feelslike: 13,
-    description: "scattered clouds",
-    humidity: 86,
-    wind: 8,
-    icon: "http://openweathermap.org/img/wn/03n@2x.png",
-    visibility: 10,
-    pressure: 1,
-    name: "New York",
-  };
+export default function SearchEngine(props) {
+  let [city, setCity] = useState(props.defaultCity);
+  let [weather, setWeather] = useState({ ready: false });
 
   function fillWeatherData(response) {
     setWeather({
+      ready: true,
       temperature: Math.round(response.data.main.temp),
       feelslike: Math.round(response.data.main.feels_like),
       description: response.data.weather[0].description,
@@ -34,27 +24,12 @@ export default function Search() {
     });
   }
 
-  function setDefaultCity() {
-    let apiKey = "5b0fc91c6e7515d2df886d62bdfd2ab4";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Amsterdam&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(setDefaultWeather);
-  }
-  function setDefaultWeather(response) {
-    defaultWeather = {
-      temperature: Math.round(response.data.main.temp),
-      feelslike: Math.round(response.data.main.feels_like),
-      description: response.data.weather[0].description,
-      humidity: response.data.main.humidity,
-      wind: Math.round(response.data.wind.speed),
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
-      visibility: response.data.visibility / 1000,
-      pressure: Math.round(response.data.main.pressure / 1000),
-      name: response.data.name,
-    };
-  }
-
   function handleSubmit(event) {
     event.preventDefault();
+    search();
+  }
+
+  function search() {
     if (city.length > 0) {
       let apiKey = "5b0fc91c6e7515d2df886d62bdfd2ab4";
       let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -67,8 +42,6 @@ export default function Search() {
   function updateCity(event) {
     setCity(event.target.value);
   }
-
-  setDefaultCity();
 
   let form = (
     <form className="search-form" id="search-form" onSubmit={handleSubmit}>
@@ -89,7 +62,7 @@ export default function Search() {
     </form>
   );
 
-  if (weather) {
+  if (weather.ready) {
     return (
       <div className="Search">
         <h1 className="city">{weather.name} Weather</h1>
@@ -100,14 +73,7 @@ export default function Search() {
       </div>
     );
   } else {
-    return (
-      <div className="Search">
-        <h1 className="city">{defaultWeather.name} Weather</h1>
-        <CurrentDate />
-        {form}
-        <WeatherData weather={defaultWeather} />
-        <Forecast />
-      </div>
-    );
+    search();
+    return <div className="Search">Loading...</div>;
   }
 }

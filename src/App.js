@@ -1,5 +1,5 @@
 import "./style.css";
-import Search from "./Search";
+import SearchEngine from "./SearchEngine";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <div className="container">
         <div className="weather-app">
-          <Search />
+          <SearchEngine defaultCity="Amsterdam" />
           <p className="coded-by">
             <a href="https://github.com/Meowmaniac/react-weather-app">
               Open source code

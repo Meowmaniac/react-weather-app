@@ -69,7 +69,7 @@ export default function SearchEngine(props) {
         <CurrentDate />
         {form}
         <WeatherData weather={weather} />
-        <Forecast />
+        <Forecast coordinates={weather.coordinates} />
       </div>
     );
   } else {
